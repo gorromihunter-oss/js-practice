@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+            body {
+        background-color: #121212;
+        color: #e0e0e0;
+}
+            button {
+        background-color: #1e1e1e;
+        color: #909490;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        color-scheme: dark; 
+        font-size-adjust: 0.5;
+}
+</style>
+</head>
+    <body>
+    <p>Original text: Click to see</p>  
+    <h1>Welcome to the Dark Mode Page</h1>
+    <input type="text" placeholder="Enter your username" />
+    <br>
+    <input type="password" placeholder="Enter your password" />
+    <br> 
+    <button>Login</button>
+    <form>
+        <input type="checkbox" id="rememberMe" name="rememberMe">
+        <label for="rememberMe">Remember me</label>
+    </form>
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('button');  
+            const paragraph = document.querySelector('p');  
+            const h1 = document.querySelector('h1');
+            const input = document.querySelector('input');
+            const passwordInput = document.querySelector('input[type="password"]');
+            const checkbox = document.querySelector('#rememberMe');
+            button.addEventListener('click',(event) => {
+                event.preventDefault(); // Prevent form submission
+                setTimeout(() => {
+                    button.textContent = 'Login';
+                    h1.textContent = 'Welcome to the Dark Mode Page';
+                    paragraph.textContent = 'Original text: Click to see';
+                }, 1000);
+            button.textContent = 'Loading...';
+            h1.textContent = 'Logging in...';
+            paragraph.textContent = input.value + ' | ' + passwordInput.value + ' | '   + checkbox.checked;
+            });
+});
+    </script>
+    </body>
+    </html>
