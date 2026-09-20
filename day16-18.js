@@ -1,5 +1,4 @@
             const factDisplay = document.getElementById('factDisplay');
-            const taskList = document.getElementById('taskList');
             const button = document.getElementById("addBtn");
             const taskInput = document.getElementById('taskInput');
 
@@ -22,20 +21,20 @@
                     if (data.meals === null) {
                         factDisplay.textContent = 'No recipies found for that ingredient.';
                     } else {
-                    data.meals.forEach(meal => {
-                        const listItem = document.createElement('li');  // create a brand new <li> element
-                        listItem.textContent = meal.strMeal;            // put this recipe's name inside it
-                        
+                        data.meals.forEach(meal => {
+                        const listItem = document.createElement('li');                  // create a brand new <li> element
+                        listItem.textContent = `${meal.strMeal} - ${meal.strCountry}`;  // put this recipe's name inside it
+
                         const img = document.createElement('img');                        
                         img.src = meal.strMealThumb;
 
+                        
                         listItem.appendChild(img);                      // put the image inside the list item
-                        factDisplay.appendChild(listItem); 
-                                     // add it to your <ul> (or whatever container)
+                        factDisplay.appendChild(listItem);              // add it to your <ul> (or whatever container)
                     });
                 }     
                 } catch(error){
-                    console.log = (error.message);
+                    console.log (error.message);
                     factDisplay.textContent = error.message;
                 }
 

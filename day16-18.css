@@ -3,6 +3,7 @@
             color: aqua;
         }
         img {
-            width: auto;
+            width: 200px;
             height: auto;
+            display: block;
         }
