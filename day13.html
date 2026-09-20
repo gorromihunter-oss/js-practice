@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        body {
+            background-color: black;
+            color: aliceblue;
+            font-family: Arial,sans-serif;
+            padding: 20px;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e1e1e;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        button {
+            background-color: #1e1e1e;
+            color: #909490;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input{
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background: #1a1a1a;
+            color: white;
+        }
+    </style>
+    </head>
+    <body>
+        <p id="factDisplay"></p>
+        <p id="factDisplay1"></p>
+        <ul id="taskList"></ul>
+
+        <input type="text" id="taskInput" placeholder="Enter a task"/>
+        <button id="addBtn">Get Fact</button>
+        <button id="addBtn1">GitHub</button>
+        <script>
+            const button = document.getElementById('addBtn');
+            const button1 = document.getElementById('addBtn1');
+            const factDisplay = document.getElementById('factDisplay');
+            const factDisplay1 = document.getElementById('factDisplay1');
+            const taskList = document.getElementById('taskList');
+            const taskInput = document.getElementById('taskInput');
+
+            async function getFact() {      // 1st part broken link
+                try{
+                    const response = await fetch ('https://this-does-not-exist-xyz123.com/data'); //('https://catfact.ninja/fact');
+                    const data = await response.json();
+                    console.log(response);
+                    console.log(data);
+                    factDisplay.textContent = data.fact ;
+                     // your existing display line here
+                } catch (error) {
+                    console.log('Something went wrong:', error); //shows it to developer
+                    factDisplay.textContent = 'Something went wrong, please try again.' ; // Message on error for user
+                    // factDisplay1.textContent = (error.message); // raw msg
+                // maybe show an error message on the page too
+                }
+            }
+
+            async function getUsername(){   //task bar for usernames in github
+                try{
+                    const username = taskInput.value.trim();    // .trim() removes unececery spacing.
+                    const response = await fetch(`https://api.github.com/users/${username}`);
+                    
+                    if (!response.ok) {
+                    throw new Error("Username not found!");                     
+                    }
+
+                    const data = await response.json();
+                    console.log(data);
+                    factDisplay.textContent = `${data.login} has ${data.followers} followers`;
+                    //factDisplay.textContent = data.followers ; // or data.bio, data.login, data,name etc — your call
+                } catch (error){
+                    console.log("Userame not found")
+                    factDisplay.textContent = "Username not found!"
+                }
+            }
+
+            button.addEventListener('click', (event => {
+                event.preventDefault();
+                getFact();
+            }));
+            button1.addEventListener('click', (event => {
+                event.preventDefault();
+                getUsername();
+            }));
+
+        </script>  
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <style>
+            body{
+                background-color: black;
+                color: aliceblue;
+            }
+        </style>
+    <body>
+        <p id="taskList"></p>
+        <ul id="factDisplay"></ul>
+
+        <input type="text" id="taskInput" placeholder="Enter a task"/>
+
+        <button id="addBtn">Search</button>
+        <script>
+            const apiKey = '70c8544e77da7d6bb7aab148f664412a';
+            const button = document.getElementById("addBtn");
+            const taskList = document.getElementById("taskList");
+            const factDisplay = document.getElementById("factDisplay");
+            const taskInput = document.getElementById("taskInput");            
+
+            function wait(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function addTask() {
+                try{
+                    button.textContent = "Loading...";
+                    //await wait(500);
+                    const city = taskInput.value.trim();
+                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            throw new Error("Api key not active yet - try again in a bit.")
+                        }
+                        throw new Error("City not Found.");
+                    }
+
+                    const data = await response.json();
+                    console.log(data);
+                    factDisplay.textContent = `(${data.sys.country}) City: ${data.name} ${data.main.temp}°C `;
+                } catch (error) {
+                    console.log(error.message);
+                    factDisplay.textContent = error.message;
+                }
+
+                button.textContent = "Search";
+                taskInput.value = '';
+            }
+
+            button.addEventListener("click", event => {
+                event.preventDefault();
+                addTask();
+            })
+            
+            taskInput.addEventListener("keydown", event => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    addTask();
+                }
+            })
+
+        </script>
+    </body>
+</html> 
