@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <style>
-        body {
-            background-color: black;
-            color: aliceblue;
-            font-family: Arial,sans-serif;
-            padding: 20px;
-        }
 
-        #taskList {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #1e1e1e;
-            margin: 8px 0;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        button {
-            background-color: #1e1e1e;
-            color: #909490;
-            border: none;
-            padding: 10px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        input{
-            padding: 10px;
-            margin-right: 10px;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background: #1a1a1a;
-            color: white;
-        }
-    </style>
-    </head>
-    <body>
-        <p id="factDisplay"></p>
-        <p id="factDisplay1"></id>
-        <ul id="taskList"></ul>
-        <input type="text" id="taskInput" placeholder="Enter a task"/>
-        <button id="addBtn1">GitHub</button>
-        <script>
             const factDisplay = document.getElementById("factDisplay");
             const taskList = document.getElementById("taskList");
             const button1 = document.getElementById("addBtn1");
@@ -85,6 +34,3 @@
             event.preventDefault();
             getUsername();
             }))
-        </script>
-    </body>
-</html>

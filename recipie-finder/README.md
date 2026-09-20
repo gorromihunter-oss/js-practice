@@ -14,4 +14,4 @@ A simple web app that searches for recipes by ingredient using TheMealDB API.
 - Splitting code into separate HTML, CSS, and JS files
 
 ## How to run
-Open `day16-18.html` in your browser.
+Open `practice16-18.html` in your browser.

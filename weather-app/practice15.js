@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <style>
-            body{
-                background-color: black;
-                color: aliceblue;
-            }
-        </style>
-    <body>
-        <p id="taskList"></p>
-        <ul id="factDisplay"></ul>
 
-        <input type="text" id="taskInput" placeholder="Enter a task"/>
-
-        <button id="addBtn">Search</button>
-        <script>
             const apiKey = 'YOUR_API_KEY_HERE';
             const button = document.getElementById("addBtn");
             const taskList = document.getElementById("taskList");
@@ -60,7 +45,3 @@
                     addTask();
                 }
             })
-
-        </script>
-    </body>
-</html> 

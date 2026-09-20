@@ -1,22 +1,3 @@
-  <style>
-  body {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-  button {
-    position: absolute;
-    background-color: #1e1e1e;
-    color: #02a802;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    color-scheme: dark; 
-    font-size-adjust: 4;
-  }
-</style>
-
-<button>Click me</button> 
-<script>
   const button = document.querySelector('button');
   let isDragging = false;
   let moved = false;
@@ -47,4 +28,3 @@
   button.addEventListener('click', () => {
     alert('You clicked the button!');
   });
-  </script>

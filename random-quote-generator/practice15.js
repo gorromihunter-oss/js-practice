@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <style>
-        body{
-            background-color: black;
-            color: azure;
-        }
-    </style>
-    <body>
-        <p id="taskList"></p>
-        <ul id="factDisplay"></ul>
-        <button id="addBtn">Button</button>
-        <script>
             const button = document.getElementById("addBtn");
             const taskList = document.getElementById("taskList");
             const factDisplay = document.getElementById("factDisplay");
@@ -43,7 +30,4 @@
             button.addEventListener("click", (event => {
                 event.preventDefault();
                 addTask();
-            }))
-        </script>
-    </body>
-</html>
+            }))        

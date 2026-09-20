@@ -1,0 +1,13 @@
+body {
+        background-color: #121212;
+        color: #e0e0e0;
+}
+            button {
+        background-color: #1e1e1e;
+        color: #909490;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        color-scheme: dark; 
+        font-size-adjust: 0.5;
+}
